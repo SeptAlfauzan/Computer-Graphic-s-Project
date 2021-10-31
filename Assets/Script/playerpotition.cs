@@ -10,7 +10,7 @@ public class playerpotition : MonoBehaviour
 	[SerializeField] private Transform m_GroundCheck;																	
 
 	const float k_GroundedRadius = .2f; 
-	private bool m_Grounded;            
+	public bool m_Grounded;            
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;
 	private Vector3 m_Velocity = Vector3.zero;

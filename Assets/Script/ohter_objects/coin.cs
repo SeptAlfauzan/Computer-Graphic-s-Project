@@ -17,12 +17,12 @@ public class coin : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            Disappear();
             scoreText.GetComponent<Score>().UpdateScore();
+            Disappear();
         }
     }
     void Disappear()
     {
-        Debug.Log("collide with player");
+        Destroy(gameObject);
     }
 }

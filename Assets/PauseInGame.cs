@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseInGame : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class PauseInGame : MonoBehaviour
     bool isActive;
     void Start()
     {
-        resumeGame();
+        //resumeGame();
         hide();
     }
 
@@ -45,7 +46,7 @@ public class PauseInGame : MonoBehaviour
 
     public void resumeGame()
     {
-        if(this.gameObject.activeSelf) hide(); 
+        if(this.isActive) hide(); 
         Time.timeScale = 1;
     }
 

@@ -10,7 +10,12 @@ public class playermovement : MonoBehaviour
     public float runSpeed = 40f;
     float horizontalMove = 0f;
     bool jump = false;
+    GameObject player;
 
+    private void Start()
+    {
+        player = GameObject.Find("player");
+    }
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
@@ -22,6 +27,25 @@ public class playermovement : MonoBehaviour
             jump = true;
             animator.SetBool("IsJumping", true);
         }
+
+
+        //if(Input.GetKeyDown(KeyCode.F)) player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 400f));
+
+        if (getHangOnclif() && Input.GetButtonDown("Jump") && !player.GetComponent<playerpotition>().m_Grounded) { //jumping from clif
+
+                player.GetComponent<HangClif>().unfreezePosition();
+                //player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 300f));
+                jump = true;
+            animator.SetBool("IsJumping", true);
+            Debug.Log("test");
+        };
+    }
+
+    bool getHangOnclif()
+    {
+        bool res = player.GetComponent<HangClif>().getHangOnClif();
+        return res;
     }
 
     public void OnLanding()
