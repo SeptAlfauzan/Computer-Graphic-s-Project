@@ -513,7 +513,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3406301693310556293}
   - component: {fileID: 3406301693310556292}
-  - component: {fileID: 5318608692215489606}
   m_Layer: 5
   m_Name: ContainerUI
   m_TagString: Untagged
@@ -549,21 +548,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasUI: {fileID: 3406301692998334537}
---- !u!114 &5318608692215489606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3406301693310556298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 3406301692998334537}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
 --- !u!1 &3406301693355199385
 GameObject:
   m_ObjectHideFlags: 0

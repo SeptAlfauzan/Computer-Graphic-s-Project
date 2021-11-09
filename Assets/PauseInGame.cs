@@ -11,7 +11,7 @@ public class PauseInGame : MonoBehaviour
     bool isActive;
     void Start()
     {
-        //resumeGame();
+        resumeGame();
         hide();
     }
 
@@ -52,6 +52,6 @@ public class PauseInGame : MonoBehaviour
 
     public void backtoMainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 3);
     }
 }

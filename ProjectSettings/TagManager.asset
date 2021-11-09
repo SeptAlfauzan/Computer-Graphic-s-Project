@@ -8,6 +8,7 @@ TagManager:
   - Background
   - Tilemap
   - Enemy
+  - Spikes
   layers:
   - Default
   - TransparentFX
