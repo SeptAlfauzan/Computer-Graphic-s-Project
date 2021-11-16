@@ -7,6 +7,7 @@ public class Death : MonoBehaviour
     Material materialShader;
     bool isDisolve = false;
     float fade = 1f;
+    bool isDeath = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,8 @@ public class Death : MonoBehaviour
                 fade = 0f;
                 isDisolve = false;
                 Destroy(this.transform.gameObject);
+
+                isDeath = true;
             }
             materialShader.SetFloat("_Fade", fade);
         }
@@ -34,8 +37,15 @@ public class Death : MonoBehaviour
         isDisolve = true;
     }
 
+    public bool getDeathStatus()
+    {
+        return isDeath;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Spikes") death();
+        if (collision.tag == "EnemyDepan") death();
+        if (collision.tag == "EnemyBelakang") death();
     }
 }

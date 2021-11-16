@@ -31,8 +31,8 @@ public class playermovement : MonoBehaviour
 
         //if(Input.GetKeyDown(KeyCode.F)) player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 400f));
 
-        if (getHangOnclif() && Input.GetButtonDown("Jump") && !player.GetComponent<playerpotition>().m_Grounded) { //jumping from clif
-
+        if (getHangOnclif() && Input.GetButtonDown("Jump") && !player.GetComponent<playerpotition>().m_Grounded) 
+        { //jumping from clif
                 player.GetComponent<HangClif>().unfreezePosition();
                 //player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 300f));

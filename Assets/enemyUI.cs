@@ -11,6 +11,7 @@ public class enemyUI : MonoBehaviour
     private Vector3 initialPosition;
     public Animator animator;
     int direction;
+    bool attack = false;
 
     void Start()
     {
@@ -24,38 +25,43 @@ public class enemyUI : MonoBehaviour
     void Update()
     {
         animator.SetFloat("Speed", Mathf.Abs(movingSpeed));
-        switch (direction)
+        if(attack == false)
         {
-            case -1:
-                if(transform.position.x > minDist)
-                {
-                    GetComponent<Rigidbody2D>().velocity= new Vector2(-movingSpeed,GetComponent<Rigidbody2D>().velocity.y);
-                }
-                else
-                {
-                    mySpriteRenderer.flipX = true;
-                    direction = 1;
-                }
-                break;
-            case 1:
-                if(transform.position.x < maxDist)
-                {
-                    GetComponent<Rigidbody2D>().velocity = new Vector2(movingSpeed,GetComponent<Rigidbody2D>().velocity.y);
-                }
-                else
-                {
-                    mySpriteRenderer.flipX = false;
-                    direction = -1;
-                }
-                break;
+            switch (direction)
+            {
+                case -1:
+                    if(transform.position.x > minDist)
+                    {
+                        GetComponent<Rigidbody2D>().velocity= new Vector2(-movingSpeed,GetComponent<Rigidbody2D>().velocity.y);
+                    }
+                    else
+                    {
+                        mySpriteRenderer.flipX = true;
+                        direction = 1;
+                    }
+                    break;
+                case 1:
+                    if(transform.position.x < maxDist)
+                    {
+                        GetComponent<Rigidbody2D>().velocity = new Vector2(movingSpeed,GetComponent<Rigidbody2D>().velocity.y);
+                    }
+                    else
+                    {
+                        mySpriteRenderer.flipX = false;
+                        direction = -1;
+                    }
+                    break;
+            }
         }
     }
-    private void OnTriggerEnter2D(Collider2D other) 
+    public void enemyattack()
     {
-        if(other.tag == "Player")
-        {
-            animator.SetTrigger("die");
-        }
+        attack = true;
+    }
+    public void enemynotAttack()
+    {
+        attack = false;
+        animator.ResetTrigger("serang");
     }
     public void enemyDead()
     {

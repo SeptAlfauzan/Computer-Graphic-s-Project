@@ -9,6 +9,8 @@ TagManager:
   - Tilemap
   - Enemy
   - Spikes
+  - EnemyDepan
+  - EnemyBelakang
   layers:
   - Default
   - TransparentFX
