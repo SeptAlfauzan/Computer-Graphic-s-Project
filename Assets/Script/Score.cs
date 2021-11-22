@@ -6,10 +6,12 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     public TextMeshProUGUI textScore;
+    public GameObject NextLvlCanvas;
     int score;
     int currentScore;
     int totalScore;
     // Start is called before the first frame update
+   
     void Start()
     {
         score = 0;
@@ -17,6 +19,7 @@ public class Score : MonoBehaviour
         
         GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
         totalScore = coins.Length;
+
 
         textScore.text = $"{score.ToString()}/{totalScore.ToString()}";
     }
@@ -29,7 +32,7 @@ public class Score : MonoBehaviour
             currentScore = score;
             textScore.text = $"{score.ToString()}/{totalScore.ToString()}";
         }
-        if(score == totalScore)
+        if(score >= totalScore)
         {
             Finish();
         }
@@ -42,6 +45,9 @@ public class Score : MonoBehaviour
 
     void Finish()
     {
-        Debug.Log("all coins already collected!");
+        
+        //NextLvlCanvas = GameObject.Find("NextLevelCanvas");
+        NextLvlCanvas.GetComponent<NextLevelHandler>().ShowCanvas(true);
+        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<HangClif>().freezeYposition();
     }
 }

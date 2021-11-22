@@ -14,11 +14,15 @@ public class belakangscript : MonoBehaviour
             if(mySpriteRenderer.flipX == false)
             {
                 mySpriteRenderer.flipX = true;
-                animator.SetTrigger("serang");
+                animator.SetBool("serang 0",true);
+            }
+            else if(mySpriteRenderer.flipX == true)
+            {
+                animator.SetBool("serang 0",true);
             }
             else
             {
-                animator.SetTrigger("serang");
+                animator.SetBool("serang 0",false);
             }
         }
     }

@@ -12,6 +12,7 @@ public class LevelController : MonoBehaviour
     string[] scenePath;
     public GameObject LevelButtonPrefab;
     GameObject buttonContainer;
+    GameObject[] buttons;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,6 @@ public class LevelController : MonoBehaviour
         width = this.GetComponent<RectTransform>().rect.width;
 
         instantiateLevelButton(sceneLength);
-        Debug.Log("width "+width);
     }
 
     string[] AssignScenePath(string[] scenes, int len)
@@ -39,7 +39,11 @@ public class LevelController : MonoBehaviour
 
     void instantiateLevelButton(int len)
     {
-        GameObject[] buttons = new GameObject[len];
+        PlayerSaveData saveData = SaveSystem.LoadSaveData();
+        if (saveData == null) saveData = new PlayerSaveData(0, "");
+        Debug.Log(saveData.level);
+
+        buttons = new GameObject[len];
         for(int i = 0; i < len; i++)
         {
             
@@ -53,12 +57,13 @@ public class LevelController : MonoBehaviour
                 buttons[i].GetComponent<RectTransform>().anchoredPosition = newPos;
                 buttons[i].transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = "Level "+(i+1);
 
-                int _index = i;
+                int _index = i + 3;
                 buttons[i].GetComponent<Button>().onClick.AddListener(() =>
                 {
                     Debug.Log(_index);
                     loadScene(_index);
                 });
+                if (i > saveData.level) buttons[i].GetComponent<Button>().interactable = false;
                 //setText(buttons[i], i);
         }
     }
@@ -75,6 +80,6 @@ public class LevelController : MonoBehaviour
     // Update is called once per frame
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 3);
+        SceneManager.LoadScene(0);
     }
 }

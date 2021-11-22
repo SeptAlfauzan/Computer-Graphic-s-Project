@@ -5,6 +5,7 @@ using UnityEngine;
 public class enemyUI : MonoBehaviour
 {
     private SpriteRenderer mySpriteRenderer;
+    public AudioSource slash;
     public float movingSpeed;
     public float minDist;
     public float maxDist;
@@ -57,11 +58,12 @@ public class enemyUI : MonoBehaviour
     public void enemyattack()
     {
         attack = true;
+        slash.Play();
     }
     public void enemynotAttack()
     {
         attack = false;
-        animator.ResetTrigger("serang");
+        slash.Stop();
     }
     public void enemyDead()
     {

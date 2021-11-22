@@ -37,6 +37,11 @@ public class playerpotition : MonoBehaviour
 		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
 		for (int i = 0; i < colliders.Length; i++)
 		{
+            if (GameObject.Find("CamBound"))
+            {
+				Physics2D.IgnoreLayerCollision(3, 10, true);
+			}
+			
 			if (colliders[i].gameObject != gameObject)
 			{
 				m_Grounded = true;

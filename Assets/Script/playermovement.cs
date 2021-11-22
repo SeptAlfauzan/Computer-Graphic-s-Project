@@ -6,10 +6,12 @@ public class playermovement : MonoBehaviour
 {
     public playerpotition potition;
     public Animator animator;
-
+    public AudioSource jumpaudio;
+    public AudioSource walkaudio;
     public float runSpeed = 40f;
     float horizontalMove = 0f;
     bool jump = false;
+    bool isWalking = false;
     GameObject player;
 
     private void Start()
@@ -19,15 +21,14 @@ public class playermovement : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-
         if(Input.GetButtonDown("Jump"))
         {
             jump = true;
             animator.SetBool("IsJumping", true);
+            walkaudio.Stop();
+            jumpaudio.Play();
         }
-
 
         //if(Input.GetKeyDown(KeyCode.F)) player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 400f));
 
@@ -41,7 +42,6 @@ public class playermovement : MonoBehaviour
             Debug.Log("test");
         };
     }
-
     bool getHangOnclif()
     {
         bool res = player.GetComponent<HangClif>().getHangOnClif();
@@ -51,11 +51,22 @@ public class playermovement : MonoBehaviour
     public void OnLanding()
     {
         animator.SetBool("IsJumping", false);
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }
 
     void FixedUpdate()
     {
         potition.Move(horizontalMove * Time.fixedDeltaTime, jump);
         jump = false;
+    }
+    public void walkplay()
+    {
+        isWalking = true;
+        walkaudio.Play();
+    }
+    public void notwalk()
+    {
+        isWalking = false;
+        walkaudio.Stop();
     }
 }

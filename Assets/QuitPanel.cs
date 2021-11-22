@@ -29,4 +29,5 @@ public class QuitPanel : MonoBehaviour
         Debug.Log("quitting game");
         Application.Quit();
     }
+    
 }

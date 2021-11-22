@@ -28,6 +28,6 @@ public class GameOver : MonoBehaviour
     }
     public void backtoMainMenu()
     {
-        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 3);
+        SceneManager.LoadScene(0);
     }
 }

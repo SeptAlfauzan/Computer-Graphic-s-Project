@@ -5,6 +5,7 @@ using UnityEngine;
 public class Death : MonoBehaviour
 {
     Material materialShader;
+    public AudioSource deathaudio;
     bool isDisolve = false;
     float fade = 1f;
     bool isDeath = false;
@@ -19,6 +20,7 @@ public class Death : MonoBehaviour
     {
         if (isDisolve)
         {
+            deathaudio.Play();
             fade -= Time.deltaTime;
             if(fade <= 0)
             {
@@ -47,5 +49,6 @@ public class Death : MonoBehaviour
         if (collision.tag == "Spikes") death();
         if (collision.tag == "EnemyDepan") death();
         if (collision.tag == "EnemyBelakang") death();
+        
     }
 }

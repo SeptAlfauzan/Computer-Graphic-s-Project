@@ -5,15 +5,16 @@ using UnityEngine;
 public class HangClif : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float duration = 20;
+    public float duration = 1.5f;
     public Collider2D HangArea;
     public Rigidbody2D rigid;
     bool collideWithClif = false;
     bool hangOnClif = false;
-    private void Start()
-    {
-        
-    }
+    bool hangTimeOver = false;
+
+    float hangTimeStart = 0;
+    float hangTimeElapse = 0; 
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Tilemap" && collision.collider == HangArea) Debug.Log("collide");
@@ -29,12 +30,41 @@ public class HangClif : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.RightControl) && collideWithClif) unfreezePosition();
-        if (Input.GetKeyDown(KeyCode.RightControl) && collideWithClif) freezeYposition();
+        Debug.Log(CalculateHangTime());
+        if (CalculateHangTime() > duration)
+        {
+            hangTimeOver = true;
+            
+            Debug.Log("subur waktumu sudah habis");
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightControl) && collideWithClif)
+        {
+            hangTimeStart = Time.time;
+            freezeYposition();
+        }
+
+        if (Input.GetKeyUp(KeyCode.RightControl) || CalculateHangTime() > duration) unfreezePosition();
+
+
+
 
     }
 
-    void freezeYposition()
+    float CalculateHangTime()
+    {
+        if (hangOnClif)
+        {
+            hangTimeElapse = Time.time - hangTimeStart;
+        }
+        else
+        {
+            hangTimeElapse = 0;
+        }
+        return hangTimeElapse;
+    }
+
+    public void freezeYposition()
     {
         rigid.constraints = RigidbodyConstraints2D.FreezePosition;
         hangOnClif = true;

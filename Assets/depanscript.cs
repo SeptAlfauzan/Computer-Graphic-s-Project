@@ -13,11 +13,15 @@ public class depanscript : MonoBehaviour
             if(mySpriteRenderer.flipX == true)
             {
                 mySpriteRenderer.flipX = false;
-                animator.SetTrigger("serang");
+                animator.SetBool("serang 0",true);
+            }
+            else if(mySpriteRenderer.flipX == false)
+            {
+                animator.SetBool("serang 0",true);
             }
             else
             {
-                animator.SetTrigger("serang");
+                animator.SetBool("serang 0",false);
             }
         }
     }

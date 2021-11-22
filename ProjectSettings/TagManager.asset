@@ -11,6 +11,7 @@ TagManager:
   - Spikes
   - EnemyDepan
   - EnemyBelakang
+  - NextLevelCanvas
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - Map
   - Background
   - Ground
-  - 
-  - 
+  - HangClif
+  - CamBound
   - 
   - 
   - 

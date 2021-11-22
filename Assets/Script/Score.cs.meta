@@ -3,7 +3,9 @@ guid: 9589875befbccfb4f9b3321764535b0e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - textScore: {instanceID: 0}
+  - NextLvlCanvas: {fileID: 6443695026574795166, guid: 8d41ffd38bf20f748830dbaccdbb9cfb, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
