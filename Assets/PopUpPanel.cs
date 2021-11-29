@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+
+
 using UnityEngine;
 
 public class PopUpPanel : MonoBehaviour
@@ -41,7 +41,8 @@ public class PopUpPanel : MonoBehaviour
 
     public void Quit()
     {
-        if (UnityEditor.EditorApplication.isPlaying) UnityEditor.EditorApplication.isPlaying = false;
+        //if (UnityEditor.EditorApplication.isPlaying) UnityEditor.EditorApplication.isPlaying = false;
+        if (UnityEngine.Application.isPlaying) Application.Quit();
         Debug.Log("quitting game");
         Application.Quit();
     }

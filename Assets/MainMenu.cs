@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        Time.timeScale = 1;
         Debug.Log(Application.dataPath);
         if (!SaveSystem.CheckLoadSaveData()) DisableLoadButton(true);
     }

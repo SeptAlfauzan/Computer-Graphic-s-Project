@@ -19,8 +19,6 @@ public class enemyUI : MonoBehaviour
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         initialPosition = transform.position;
         direction = -1;
-        maxDist += transform.position.x;
-        minDist -= transform.position.x;
     }
 
     void Update()
